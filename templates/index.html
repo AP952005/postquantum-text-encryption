@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER CRUSADERS</title>
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General styling for the body */
+        body {
+            background-image: url("{{ url_for('static', filename='istockphoto-1327264496-612x612-1.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #002366;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: gold;
+            color: #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ffd700;
+        }
+
+        /* Logo image styling */
+        .logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Title styling */
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: gold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            color: navyblue;
+        }
+
+        /* Container styling */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            height: 500px;
+            background-color: #003366;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Section styling */
+        .section {
+            flex: 1;
+            padding: 20px;
+            margin: 0 10px;
+            background-color: #004080;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: slideFromRight 1s ease-in-out forwards; /* Animation for "ENCRYPTION" container */
+        }
+
+        /* Keyframes for animation */
+        @keyframes slideFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Heading 2 styling */
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 12px;
+            color: #ffd700;
+        }
+
+        /* Input, textarea, button styling */
+        input[type="text"], textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #002366;
+            border: 1px solid transparent;
+            transition: border-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Focus state for inputs, textarea, button */
+        input[type="text"]:focus, textarea:focus, button:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+
+        /* Readonly textarea styling */
+        textarea[readonly] {
+            background-color: #f0f0f0;
+        }
+
+        /* Button styling */
+        button {
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: transparent;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            width: auto;
+            padding: 8px 16px;
+        }
+
+        /* Hover state for button */
+        button:hover {
+            background-color: #ffd700;
+            color: #002366;
+        }
+
+        /* Copy icon styling */
+        .copy-icon {
+            color: #ffd700;
+            font-size: 20px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            CYBER CRUSADERS
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="@^2&">
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2>ENCRYPTION</h2>
+            <form action="/" method="post">
+                <label>Input Message:</label>
+                <input type="text" name="message" placeholder="Enter message">
+                <button type="submit" name="encrypt">Encrypt</button>
+            </form>
+            <label>Encrypted Message:</label>
+            <div style="position: relative;">
+                <textarea readonly>{{ encrypted_message }}</textarea>
+                <button onclick="copyToClipboard()" class="copy-icon"><i class="fas fa-copy"></i> Copy</button>
+            </div>
+        </div>
+        <div class="section">
+            <h2>DECRYPTION</h2>
+            <form action="/" method="post">
+                <label>Encrypted Message:</label>
+                <textarea name="encrypted_message">{{ encrypted_message }}</textarea>
+                <button type="submit" name="decrypt">Decrypt</button>
+            </form>
+            <label>Decrypted Plain Text:</label>
+            <textarea readonly>{{ decrypted_plain_text }}</textarea>
+        </div>
+    </div>
+    <script>
+        function copyToClipboard() {
+            var copyText = document.querySelector('textarea');
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>

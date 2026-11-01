@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NTRU Encryption</title>
+</head>
+<body>
+    <h1>NTRU Encryption</h1>
+    <form method="post">
+        <label for="message">Enter Message:</label><br>
+        <input type="text" id="message" name="message"><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if encrypted_ciphertexts %}
+        <h2>Encrypted Ciphertexts:</h2>
+        {% for ciphertext in encrypted_ciphertexts %}
+            <p>{{ ciphertext }}</p>
+        {% endfor %}
+    {% endif %}
+    {% if decrypted_message %}
+        <h2>Decrypted Message:</h2>
+        <p>{{ decrypted_message }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,4 +1,4 @@
-# 🔒 QuantumText — Probabilistic Post-Quantum Text Encryption
+# 🔒 Post Quantum Text — Probabilistic Post-Quantum Text Encryption
 
 <div align="center">
 
